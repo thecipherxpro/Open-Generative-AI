@@ -56,7 +56,7 @@ sudo mkdir -p /var/www
 cd /var/www
 sudo git clone https://github.com/thecipherxpro/Open-Generative-AI.git
 cd Open-Generative-AI
-git checkout cipherx/comfyui-web
+git checkout main
 ```
 
 For a public repository no GitHub token is required to clone.
