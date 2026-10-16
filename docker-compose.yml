@@ -3,7 +3,15 @@ services:
     build: .
     container_name: open-generative-ai
     ports:
-      - "3001:3000"
+      - "127.0.0.1:3001:3000"
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://ai.tatpc.ca}
+      COMFYUI_URL: ${COMFYUI_URL:-http://host.docker.internal:8188}
+      COMFYUI_CHECKPOINT: ${COMFYUI_CHECKPOINT:-sd_xl_base_1.0.safetensors}
+      COMFYUI_OUTPUT_PREFIX: ${COMFYUI_OUTPUT_PREFIX:-tatpc-ai}
+      LOCAL_AI_TIMEOUT_MS: ${LOCAL_AI_TIMEOUT_MS:-240000}
+      LOCAL_AI_RATE_LIMIT: ${LOCAL_AI_RATE_LIMIT:-10}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
